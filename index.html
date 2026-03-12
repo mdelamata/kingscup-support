@@ -3,128 +3,470 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The King's Cup — Official Support</title>
+    <title>The King's Cup — The Ultimate Social Card Game</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'The Blue Oasis';
+            src: url('resources/The Blue Oasis.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         :root {
-            --bg-color: #0F0F12;
-            --card-bg: #1A1A22;
+            --bg-color: #050505;
+            --card-bg: #111114;
             --primary-gold: #D4AF37;
-            --primary-gold-hover: #B8860B;
+            --primary-gold-glow: rgba(212, 175, 55, 0.4);
+            --primary-gold-hover: #F1C40F;
             --text-main: #FFFFFF;
-            --text-muted: #A0A0AB;
-            --border-color: #2A2A38;
+            --text-muted: #8E8E93;
+            --border-color: #2C2C2E;
+            --iphone-bezel: #1C1C1E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--bg-color);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 80px 20px;
+            color: var(--text-main);
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        .container {
-            background: var(--card-bg);
-            padding: 60px 40px;
-            border-radius: 32px;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+        /* --- Header & Navigation --- */
+        nav {
+            padding: 30px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--primary-gold);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            border: 1px solid var(--border-color);
+            padding: 0 20px;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
+            position: relative;
         }
 
-        .app-icon {
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('resources/icon-1024.png') no-repeat center center;
+            background-size: 40%;
+            opacity: 0.03;
+            filter: blur(50px);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .app-icon-hero {
             width: 120px;
             height: 120px;
             border-radius: 28px;
-            margin-bottom: 32px;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px var(--primary-gold-glow);
         }
 
         h1 {
-            font-size: 3rem;
-            font-weight: 900;
-            margin-bottom: 8px;
-            letter-spacing: -0.04em;
+            font-family: 'The Blue Oasis', sans-serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: white;
+            text-transform: none; /* Keep capitalization as written in HTML */
         }
 
-        .subtitle {
-            color: var(--primary-gold);
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 32px;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        p {
+        .hero p {
+            font-size: 1.4rem;
             color: var(--text-muted);
-            font-size: 1.2rem;
-            max-width: 500px;
-            margin: 0 auto 48px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-weight: 300;
         }
 
-        .links {
+        .cta-group {
             display: flex;
-            flex-direction: column;
             gap: 20px;
+            justify-content: center;
+        }
+
+        .badge-link {
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .badge-link:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: inline-block;
+            border: 2px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--border-color);
+            transform: translateY(-5px);
+        }
+
+        /* --- Showcase Section --- */
+        .showcase {
+            padding: 150px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .section-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+        }
+
+        /* --- iPhone Bezel --- */
+        .iphone-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
             align-items: center;
         }
 
-        .link-btn {
-            display: inline-block;
-            background-color: var(--primary-gold);
-            color: #000;
-            text-decoration: none;
-            padding: 16px 40px;
-            border-radius: 16px;
-            font-weight: 800;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            min-width: 240px;
-            font-size: 1.1rem;
+        .iphone-mockup {
+            position: relative;
+            width: 300px;
+            height: 610px;
+            background: var(--iphone-bezel);
+            border-radius: 40px;
+            padding: 10px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 0 10px rgba(255,255,255,0.1);
+            border: 2px solid #3A3A3C;
+            flex-shrink: 0;
         }
 
-        .link-btn:hover {
-            background-color: var(--primary-gold-hover);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(212, 175, 55, 0.3);
+        /* The Speaker/Notch Area */
+        .iphone-mockup::after {
+            content: '';
+            position: absolute;
+            top: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 20px;
+            background: #000;
+            border-radius: 20px;
+            z-index: 10;
         }
 
-        .link-btn.secondary {
-            background-color: transparent;
+        /* Landscape Bezel */
+        .iphone-mockup.landscape {
+            width: 610px;
+            height: 300px;
+        }
+
+        .iphone-mockup.landscape::after {
+            top: 50%;
+            left: 22px;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 80px;
+        }
+
+        .iphone-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            overflow: hidden;
+            background: #000;
+            position: relative;
+        }
+
+        .iphone-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- Features Section --- */
+        .features {
+            padding: 100px 20px;
+            background-color: var(--card-bg);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: #1C1C1E;
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-gold);
+        }
+
+        .feature-card h3 {
             color: var(--primary-gold);
-            border: 2px solid var(--primary-gold);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
         }
 
-        .link-btn.secondary:hover {
-            background-color: rgba(212, 175, 55, 0.1);
-        }
-
-        footer {
-            margin-top: 80px;
+        .feature-card p {
             color: var(--text-muted);
+        }
+
+        /* --- FAQ Section --- */
+        .faq {
+            padding: 100px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq h2 {
+            text-align: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 60px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        .faq-question {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            color: var(--text-muted);
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 100px 20px 50px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .copyright {
+            color: #48484A;
             font-size: 0.9rem;
-            opacity: 0.6;
+        }
+
+        /* Responsive Mobile Adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 3.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .cta-group { flex-direction: column; width: 100%; padding: 0 40px; }
+            .nav-links { display: none; }
+            .iphone-mockup { width: 260px; height: 530px; }
+            .iphone-mockup.landscape { width: 90vw; height: 45vw; max-width: 530px; max-height: 260px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="resources/icon-1024.png" alt="The King's Cup Icon" class="app-icon">
-        <h1>The King's Cup</h1>
-        <div class="subtitle">Official Support</div>
-        <p>The ultimate social card game for parties, tailored for a premium experience.</p>
 
-        <div class="links">
-            <a href="support.html" class="link-btn">Contact Support</a>
-            <a href="privacy-policy.html" class="link-btn secondary">Privacy Policy</a>
+    <nav>
+        <a href="#" class="logo">THE KING'S CUP</a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#screenshots">Screenshots</a>
+            <a href="#faq">FAQ</a>
+            <a href="support.html">Support</a>
         </div>
-    </div>
+    </nav>    <section class="hero">
+        <div class="hero-content">
+            <img src="resources/icon-1024.png" alt="Icon" class="app-icon-hero">
+            <h1>The King's Cup</h1>
+            <p>Elevate your card night with the most premium social game for local parties.</p>
+            <div class="cta-group">
+                <a href="https://apps.apple.com/app/id414073153" class="badge-link" id="download-on-the-app-store">
+                    <img src="resources/download-on-the-app-store.svg" alt="Download on the App Store" style="height: 60px;">
+                </a>
+                <a href="#features" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="section-header">
+            <h2>DESIGNED FOR FUN</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Fully Customizable</h3>
+                <p>Tailor every rule to match your house style. Save and sync your favorite game modes via iCloud.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Premium Aesthetics</h3>
+                <p>Smooth animations and a luxurious dark-gold interface that looks stunning on every device.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Privacy First</h3>
+                <p>No account required. All your game data stays on your device and syncs securely through iCloud.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="screenshots" class="showcase">
+        <div class="section-header">
+            <h2>IN ACTION</h2>
+        </div>
+        <div class="iphone-container">
+            <!-- iPhone 1 -->
+            <div class="iphone-mockup">
+                <div class="iphone-screen">
+                    <img src="resources/kingscup1.png" alt="Game Screen 1">
+                </div>
+            </div>
+            <!-- iPhone 2 -->
+            <div class="iphone-mockup">
+                <div class="iphone-screen">
+                    <img src="resources/kingscup2.png" alt="Game Screen 2">
+                </div>
+            </div>
+            <!-- iPhone 3 - Landscape -->
+            <div class="iphone-mockup landscape">
+                <div class="iphone-screen">
+                    <img src="resources/kingscup3.png" alt="Game Screen 3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <h2>FAQ</h2>
+        <div class="faq-item">
+            <div class="faq-question">Is the app free to use?</div>
+            <div class="faq-answer">Yes! The King's Cup is free to download and play. We use minimal, non-intrusive ads to keep development going.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Does it support multiple players?</div>
+            <div class="faq-answer">Absolutely. You can add as many players as you want for the ultimate party experience.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Where is my data stored?</div>
+            <div class="faq-answer">Everything stays on your iPhone. We don't use external servers for your game data.</div>
+        </div>
+    </section>
 
     <footer>
-        &copy; 2026 The King's Cup. All rights reserved.
+        <a href="#" class="footer-logo">THE KING'S CUP</a>
+        <div class="footer-links">
+            <a href="support.html">Support</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="mailto:support@kingscup.app">Contact Us</a>
+        </div>
+        <p class="copyright">&copy; 2026 The King's Cup. All rights reserved.</p>
     </footer>
+
 </body>
 </html>

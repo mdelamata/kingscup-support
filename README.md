@@ -1,17 +1,21 @@
-# The King's Cup - Support Pages
+# The King's Cup - Website
 
-This repository contains the official support pages for **The King's Cup** iOS application.
+This repository contains the premium marketing landing page and support pages for **The King's Cup** iOS application.
 
-## 🌐 Live URLs (GitHub Pages)
+## 🌐 Live URL (GitHub Pages)
 
-- **Home Page**: [https://mdelamata.github.io/kingscup-support/](https://mdelamata.github.io/kingscup-support/)
+- **Landing Page**: [https://mdelamata.github.io/kingscup-support/](https://mdelamata.github.io/kingscup-support/)
 - **Privacy Policy**: [https://mdelamata.github.io/kingscup-support/privacy-policy.html](https://mdelamata.github.io/kingscup-support/privacy-policy.html)
 - **Support Center**: [https://mdelamata.github.io/kingscup-support/support.html](https://mdelamata.github.io/kingscup-support/support.html)
 
-## 🎨 Design Theme
-The pages feature a unified, premium dark gold theme designed to match the app's identity.
+## 🎨 Premium Design
+The landing page has been redesigned to feature:
+- A modern, high-end dark gold theme.
+- **iPhone 16 Pro** mockups for app screenshots.
+- Interactive FAQ and feature sections.
+- Responsive design tailored for all devices.
 
 ## 🔒 Privacy & Advertising
 - **100% Local**: All game data is stored locally on the user's device.
-- **Google AdMob**: Used for serving personalized advertisements.
-- **No Third-Party Tracking**: No other analytics or tracking services are integrated.
+- **Google AdMob**: Used for serving advertisements to keep the app free.
+- **No Third-Party Tracking**: Beyond basic ad functionality, no other tracking is integrated.
